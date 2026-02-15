@@ -1,0 +1,210 @@
+.event-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  gap: 0.5rem;
+  transition: all ease 0.3s;
+  height: max-content;
+  color: white;
+}
+
+.event-card .event-data {
+  border: 1px solid white;
+  padding: 1.2rem;
+  transition: all ease 0.2s;
+  display: flex;
+  /* justify-content: center; */
+  padding-top: 0;
+  padding-bottom: 0;
+  position: relative;
+  overflow: hidden;
+  width: fit-content;
+  transition: 0.25s all;
+  text-shadow: 0 0 10px black;
+}
+
+.event-card .event-data.expand{
+  width: 400px;
+}
+
+.event-card .event-data .data-header {
+  font-size: 1.2rem;
+  /* font-family: ; */
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  padding: 1rem;
+  padding-left: 0;
+  padding-right: 0;
+  transition: all ease 0.2s;
+  gap: 2rem;
+  height: 50%;
+  /* flex-direction: column; */
+  border: 0px solid red;
+}
+
+.event-card .event-data .data-header p {
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+.event-card .event-data .data-body {
+  
+  transition: all ease 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  border: 0px solid green;
+  gap: 20px;
+  /* width: 300px; */
+  width: 100%;
+  /* margin-top: 2rem; */
+}
+
+.event-card .event-data .data-body .img{
+  width: 100%;
+  height: 100%;
+  transition: all ease 0.2s;
+  /* height: 100%; */
+  border: 0px solid red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color: black;
+}
+
+.event-card .event-data .data-body .img img {
+  /* height: 15rem; */
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: all ease 0.2s;
+  transform-origin: left;
+  border: 0px solid yellow;
+  position: relative;
+  opacity: 40%;
+}
+
+
+.event-card .event-data .data-body  .img img::before {
+  content: "learn more";
+  font-size: 1rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: rgba(0, 0, 0, 0.089);
+  color: white;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: all ease 0.2s;
+  top: 0;
+  border: 1px solid red;
+}
+
+.event-card .event-data .data-body .img:hover img::before {
+  transform: scaleX(1);
+  opacity: 1;
+}
+.event-card .event-data .data-body .desc{
+  /* height: 10ch; */
+  border: 0px solid yellow;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  width: 100%;
+  text-wrap: wrap;
+  text-align: right;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  padding: 0 0 0 20px;
+}
+
+.event-card .event-data .data-header:hover {
+  cursor: pointer;
+  color: var(--accent1);
+}
+
+@media only screen and (max-width: 580px){
+  .event-card, .event-data{
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .event-card .event-data {
+    width: 100%;
+    height: fit-content;
+  }
+  .event-card .event-data.expand{
+    height: 300px;
+    width: 100%;
+  }
+
+  .event-card .event-data .data-header{
+    writing-mode: horizontal-tb;
+    transform: rotate(0deg);
+    /* border: 1px solid red; */
+    height: fit-content;
+  }
+
+
+  /* .event-card .event-data .data-body .img img {
+    transform-origin: top;
+    width: 70vw;
+    height: 100%;
+  } */
+
+  .day-details-wrapper .section-event {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 400px){
+  .event-card .event-data{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+.event-card .section-event {
+  width: 100%;
+  overflow-x: scroll;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.event-card .section-event::-webkit-scrollbar {
+  height: 7px !important;
+  border-radius: 10px !important;
+}
+
+.event-card .section-event::-webkit-scrollbar-track {
+  height: 5px !important;
+}
+
+.event-card .section-event::-webkit-scrollbar-thumb {
+  height: 5px !important;
+  border-radius: 10px;
+  background: var(--accent1);
+}
+.event-card .section-event::-webkit-scrollbar-button,
+.event-card .section-event::-webkit-scrollbar-corner {
+  display: none;
+}

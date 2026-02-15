@@ -1,0 +1,49 @@
+.team {
+    margin-top: 5rem;
+    animation: fadeIn 0.5s linear forwards;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1.5rem
+}
+
+.team h1 {
+    font-family: "Sedgwick Ave Display";
+    margin-bottom: 1rem;
+}
+
+.teamspage-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 5rem;
+}
+
+.team-container {
+    margin: 1rem 1rem !important;
+    padding: 0 !important;
+    max-width: 1200px !important;
+}
+
+.accordion-h {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 1rem 0.3rem 0.3rem;
+    background-color: #1b1b1b;
+    border-radius: 20px;
+    font-size: 1.3rem;
+}
+
+.accordion-h div {
+    padding: 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--primary);
+    aspect-ratio: 1/1;
+}
