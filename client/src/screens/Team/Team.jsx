@@ -73,7 +73,7 @@ function ProfessorsList() {
 }
 
 const Team = () => {
-    const {teamsData, teamsLoad} = useAuth()
+    const {allTeams} = useAuth()
 
     // useEffect(() => {
     //     const handleFetchAdmins = async () => {
@@ -98,13 +98,8 @@ const Team = () => {
     //     handleFetchAdmins();
     // }, [user]);
 
-    if (teamsLoad) {
-        return <TeamLoading />;
-    }
-
     return (
-        teamsData &&
-        !teamsLoad && (
+        allTeams && (
             <div className="team">
                 <h1>Meet Our Team</h1>
                 <ProfessorsList />
@@ -131,7 +126,7 @@ const Team = () => {
                     </Button>
                 </Box>
                 <Container className="team-container">
-                    {teamsData.map((teamData, i) => {
+                    {allTeams.map((teamData, i) => {
                         if (teamData.members.length === 0) return;
                         console.log(teamData);
 

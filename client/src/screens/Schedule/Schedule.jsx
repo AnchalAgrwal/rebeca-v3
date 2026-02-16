@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { nights } from "../../App";
 import { extractTime } from "../../components/EventList/EventList";
-import { Tooltip, Paper } from "@mui/material";
+import { Tooltip, Paper, Typography } from "@mui/material";
 
 var introtext = `Plan Your Moves, Catch Every Moment!
 Get ready to dive into the heart of REBECA 84! From electrifying performances to unmissable events, here's your roadmap to the ultimate celebration. Mark your calendars, set your reminders, and brace yourself for an unforgettable journey. From sunup to sundown, here's where the magic unfolds—don't blink or you might miss it!`;
@@ -231,7 +231,7 @@ const onButtonClick = () => {
 };
 
 function Schedule() {
-    const { allEvents, eventsLoad } = useAuth();
+    const { allEvents } = useAuth();
     const [eventContent, setEventContent] = useState({
         saptami: [],
         ashtami: [],
@@ -251,14 +251,17 @@ function Schedule() {
             miscellaneous: [],
         };
 
+        var x = 0
+
         for (let e of allEvents) {
-            const date = new Date(e.rounds[0].startTime).getUTCDate();
+            const date = x+19;
 
             if (date === nights.saptami) updatedContent.saptami.push(e);
             else if (date === nights.ashtami) updatedContent.ashtami.push(e);
             else if (date === nights.navami) updatedContent.navami.push(e);
             else if (date === nights.dashami) updatedContent.dashami.push(e);
             else updatedContent.miscellaneous.push(e);
+            x = (x + 1) % 4
         }
 
         setEventContent(updatedContent);
@@ -282,10 +285,10 @@ function Schedule() {
                 </Link>
             </div>
 
-            {!eventsLoad &&
+            {/* {allEvents &&
                 Object.keys(content).map((night, i) => {
                     return <EventSection data={content[night]} key={i} dayEvents={eventContent[night]} rank={i} />;
-                })}
+                })} */}
         </div>
     );
 }

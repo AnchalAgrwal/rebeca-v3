@@ -105,6 +105,9 @@ export const AuthProvider = ({ children }) => {
         };
 
         initAuth();
+        console.log(allEvents);
+        console.log(allTeams);
+        console.log(user)
     }, []);
 
     const handleLoginSuccess = async (response) => {

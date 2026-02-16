@@ -1,20 +1,15 @@
 import { useState, useEffect } from "react";
 import { Drawer, Avatar, Menu, MenuItem, IconButton, Typography, Button, Box } from "@mui/material";
 import ResponsiveDrawer from "./ResponsiveDrawer";
-
-// import {Button} from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
-import CustomButton from "../Button/Button";
 import "./Navbar.css";
 import Progressbar from "../Progressbar/Progressbar";
-// import { LogoutOutlined, ExportOutlined } from "@ant-design/icons";
-
-import LoginForm from "../Login/LoginForm";
+// import LoginForm from "../Login/LoginForm";
 import React from "react";
 import { useAuth } from "../../AuthContext";
-import { checkStatus } from "../../services/authApi";
 import AccountMenu from "../AccountMenu/AccountMenu";
 import MenuIcon from "@mui/icons-material/Menu";
+import { checkAuthStatus, loginWithGoogle, logoutUser } from "../../services/api";
 
 const Navbar = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -22,21 +17,20 @@ const Navbar = () => {
     const [loginOpen, setLoginOpen] = useState(false);
 
     const { user, handleLogin, handleLogout } = useAuth();
-    const isLoggedIn = async () => {
-        try {
-            const res = await checkStatus();
-            if (!res.data.user) return;
-            console.log(res?.data?.message);
-            handleLogin(res?.data?.user);
-        } catch (err) {
-            console.log("status check fail");
-            console.log(err.message);
-        }
-    };
+    // const isLoggedIn = async () => {
+    //     try {
+    //         if (!user) return;
+    //         console.log(res?.data?.message);
+    //         handleLogin(res?.data?.user);
+    //     } catch (err) {
+    //         console.log("status check fail");
+    //         console.log(err.message);
+    //     }
+    // };
 
-    useEffect(() => {
-        isLoggedIn();
-    }, []);
+    // useEffect(() => {
+    //     isLoggedIn();
+    // }, []);
 
     const handleDrawerOpen = () => {
         setDrawerOpen(true);
@@ -55,7 +49,7 @@ const Navbar = () => {
                 <Progressbar />
 
                 {/* {user && <Notification message={`Welcome, ${user.name.split(' ')[0]}`} />} */}
-                <LoginForm open={loginOpen} setOpen={setLoginOpen} />
+                {/* <LoginForm open={loginOpen} setOpen={setLoginOpen} /> */}
                 <div className="left-col">
                     {width < 720 && (
                         <IconButton
@@ -108,7 +102,7 @@ const Navbar = () => {
                                     />
                                 </div>
                             )} */}
-                            <AccountMenu />
+                            {/* <AccountMenu /> */}
                         </>
                     )}
                     {width < 720 && (
