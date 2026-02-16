@@ -3,7 +3,7 @@ import { Drawer, Avatar, Menu, MenuItem, IconButton, Typography, Button, Box } f
 import ResponsiveDrawer from "./ResponsiveDrawer";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
-import Progressbar from "../Progressbar/Progressbar";
+// import Progressbar from "../Progressbar/Progressbar";
 // import LoginForm from "../Login/LoginForm";
 import React from "react";
 import { useAuth } from "../../AuthContext";
@@ -46,7 +46,7 @@ const Navbar = () => {
     return (
         <>
             <div className="navbar">
-                <Progressbar />
+                {/* <Progressbar /> */}
 
                 {/* {user && <Notification message={`Welcome, ${user.name.split(' ')[0]}`} />} */}
                 {/* <LoginForm open={loginOpen} setOpen={setLoginOpen} /> */}

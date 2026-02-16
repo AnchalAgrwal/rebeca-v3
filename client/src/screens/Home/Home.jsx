@@ -4,6 +4,7 @@ import ArtistCard from "../../components/ArtistCard/ArtistCard";
 
 import Nightbanner from "../../components/Nightbanner/Nightbanner";
 import CollageHeart from "../../components/CollageHeart/CollageHeart";
+import Hero from "../../components/ScrollFancy/Hero"
 
 const Home = () => {
     const artists = [
@@ -36,16 +37,6 @@ const Home = () => {
             img: "MSonic.webp",
         },
     ];
-
-    // const [artistMargin, setArtistmargin] = useState(0);
-
-    // const handleMoveArtists = (dir) => {
-    //   const move = dir == "left" ? 200 : -200;
-    //   dir == "left" && artistMargin < 0 && setArtistmargin(artistMargin + move);
-
-    //   dir == "right" && artistMargin <= 0 && setArtistmargin(artistMargin + move);
-    // };
-
     const { innerWidth: width, innerHeight: height } = window;
 
     return (
@@ -53,16 +44,7 @@ const Home = () => {
             <div className="wave-bg">
                 <img src="/assets/imgs/home/wavy_bg.webp" alt="" />
             </div>
-            <section className="section-1">
-                <Heading title="Get ready to dance, laugh, celebrate like never before - this is Rebeca!"></Heading>
-                <div className="cover-img">
-                    {width <= 720 ? (
-                        <img src="/assets/imgs/home/cover_img5.webp" alt="" />
-                    ) : (
-                        <img src="/assets/imgs/home/cover_img3.webp" alt="" />
-                    )}
-                </div>
-            </section>
+            <Hero />
             <section className="section-2">
                 <div className="banner">
                     <div className="display-font">BEings, are you ready?</div>
