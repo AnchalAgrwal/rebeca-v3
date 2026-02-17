@@ -12,15 +12,6 @@ const userSchema = new mongoose.Schema(
             required: [true, "Missing Field: image"],
             trim: true
         },
-        team: {
-            type: String,
-            trim: true,
-        },
-        position: {
-            type: String,
-            trim: true,
-            required: false
-        },
         email: {
             type: String,
             required: [true, "Missing Field: Email"],
@@ -38,13 +29,16 @@ const userSchema = new mongoose.Schema(
                 message: "ERR: dept: Department Name too short."
             }
         },
-        tagLine: {
+        college: {
             type: String
         },
         googleId: {
             type: String,
             unique: true,
             sparse: true // Allows admins who don't have a Google ID yet to exist
+        },
+        passout_year: {
+            type: String
         }
     },
     { timestamps: true }

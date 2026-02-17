@@ -1,43 +1,33 @@
-import React, { useState, useEffect } from "react";
 import {
     Container,
+    MenuItem,
+    Paper,
     Typography,
     TextField,
     Avatar,
     Button,
-    Grid2,
-    Paper,
     IconButton,
+    Grid2,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogContentText,
+    DialogActions,
     Snackbar,
     Alert,
-    InputAdornment,
     AlertTitle,
+    InputAdornment,
     Card,
     CardContent,
 } from "@mui/material";
-import {
-    Email,
-    Phone,
-    School,
-    Engineering,
-    CalendarToday,
-    Edit,
-    Person,
-    Save,
-    PersonSearch,
-} from "@mui/icons-material";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
+import { Person, Email, School, Engineering, CalendarToday, Save, PersonSearch } from "@mui/icons-material";
 import { useAuth } from "../../AuthContext";
-import { postImage } from "../../services/imgApi";
-import { updateMember } from "../../services/userApi";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { updateUser } from "../../services/api";
 
 const NoUser = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     return (
         <Card sx={{ width: "min(100%, 400px)" }}>
             <CardContent style={{ display: "flex", alignItems: "center", flexDirection: "column", width: "100%" }}>
@@ -55,371 +45,242 @@ const NoUser = () => {
 };
 
 const ProfileDashboard = () => {
-    const formData = new FormData();
+    const { user } = useAuth(); // Assuming API is now 'updateUser'
     const [dopen, setDopen] = useState(false);
-
     const [popup, setPopUp] = useState(false);
     const [message, setMessage] = useState("");
-    const [severity, setSeverity] = useState("");
+    const [severity, setSeverity] = useState("info");
     const [messageTitle, setMessageTitle] = useState("");
     const [loading, setLoading] = useState(false);
-    const { user } = useAuth();
-    const [imageFile, setImageFile] = useState([]);
-    const [userData, setUserData] = useState({});
+
+    const [userData, setUserData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        college: "",
+        dept: "",
+        passout_year: "",
+    });
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        setUserData({
-            image: user?.image, // Placeholder image URL
-            name: user?.name,
-            email: user?.email,
-            phone: user?.phone || "",
-            college: user?.college || user?.email?.endsWith("iiests.ac.in") ? "IIEST Shibpur" : "",
-            dept: user?.dept,
-            passout_year: user?.passout_year,
-            position: null,
-        });
-        setImageFile({
-            uid: "-1",
-            url: user?.image,
-            status: "done",
-            name: "default",
-        });
+        if (user) {
+            setUserData({
+                name: user.name || "",
+                email: user.email,
+                phone: user.phone || "",
+                college: user.college || (user.email?.endsWith("iiests.ac.in") ? "IIEST Shibpur" : ""),
+                dept: user.dept || "",
+                passout_year: user.passout_year || "",
+                id: user._id,
+            });
+        }
     }, [user]);
 
-    const handleImagePreview = (event) => {
-        const file = event.target.files[0];
-        console.log(file);
-        setImageFile(file);
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setUserData({ ...userData, image: reader.result });
-            };
-            reader.readAsDataURL(file);
-        }
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        // Phone number restriction logic
+        if (name === "phone" && !/^\d{0,10}$/.test(value)) return;
+        setUserData((prev) => ({ ...prev, [name]: value }));
     };
 
     const onFinish = async () => {
+        setLoading(true);
         try {
-            setLoading(true);
-            console.log(userData);
+            // Filter only changed fields to send to API
+            const updatePayload = {};
+            let hasChanges = false;
 
-            const imageURL = await handleSubmitImage();
-            console.log("IMAGE Received: " + imageURL);
-
-            var changed = 0;
-            const newData = {
-                name: userData.name,
-                phone: userData.phone,
-                email: userData.email,
-                image: imageURL,
-                passout_year: userData.passout_year,
-                dept: userData.dept,
-                college: userData.college,
-            };
-
-            const toUpdate = [];
-            Object.entries(newData).forEach(([key, newValue]) => {
-                if (user[key] !== newValue) {
-                    formData.append(key, newValue);
-                    changed = 1;
-                    console.log(key);
-                    console.log("new value: ");
-                    console.log(newValue);
-                    console.log(user[key]);
-                    toUpdate.push(key);
+            Object.keys(userData).forEach((key) => {
+                if (userData[key] !== user[key]) {
+                    updatePayload[key] = userData[key];
+                    hasChanges = true;
                 }
             });
-            if (changed) {
-                formData.append("email", userData.email);
-                await updateMember(formData);
-                setMessage(`Fields ${toUpdate} updated successfully. Please reload to view changes.`);
-                setSeverity("success");
-                setMessageTitle("Data Updated!");
-                setPopUp(true);
-            } else {
-                setMessage("No changes found to edit.");
-                setSeverity("warning");
-                setMessageTitle("No Changes Found");
-                setPopUp(true);
+
+            if (!hasChanges) {
+                showToast("No Changes Found", "No modifications were detected.", "warning");
+                return;
             }
+
+            // Call the renamed API
+            await updateUser(updatePayload);
+
+            showToast("Success!", "Profile updated successfully.", "success");
         } catch (err) {
-            console.log(err);
-            const detailed = err?.response?.data?.message;
-            setMessage(detailed || err.message);
-            setSeverity("error");
-            setMessageTitle("Some Error Occured");
-            setPopUp(true);
+            const detailed = err?.response?.data?.message || err.message;
+            showToast("Error", detailed, "error");
         } finally {
             setLoading(false);
         }
     };
 
-    const handleSubmitImage = async () => {
-        // <- This will send the selected image to our api
-        try {
-            if (imageFile.uid === "-1") {
-                console.log(imageFile);
-                return imageFile.url;
-            }
-            const res = await postImage({ image: imageFile });
-            console.log("Image needed to be fetched");
-            return res.data.data.imageUrl;
-        } catch (err) {
-            console.log(err);
-            const errormsg = err.response ? err.response.data?.message : err.message;
-            setMessage(`ERROR: ${errormsg}`);
-            setSeverity("error");
-            setMessageTitle("Error Submitting Image");
-            setPopUp(true);
-        }
-    };
-
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setUserData({ ...userData, [name]: value });
+    const showToast = (title, msg, sev) => {
+        setMessageTitle(title);
+        setMessage(msg);
+        setSeverity(sev);
+        setPopUp(true);
     };
 
     if (!user) {
         return (
-            <Container maxWidth="md" sx={{ mt: "5rem", color: "#fff !important", display: 'flex', justifyContent: 'center' }}>
+            <Container maxWidth="md" sx={{ mt: "5rem", display: "flex", justifyContent: "center" }}>
                 <NoUser />
             </Container>
         );
     }
 
     return (
-        user && (
-            <Container maxWidth="md" sx={{ mt: "5rem", color: "#fff !important" }}>
-                <Paper sx={{ p: 4, borderRadius: 2, bgcolor: "rgb(17, 23, 29)" }}>
-                    <Typography variant="h4" align="center" gutterBottom>
-                        Profile Dashboard
-                    </Typography>
+        <Container maxWidth="md" sx={{ mt: "5rem", color: "#fff" }}>
+            <Paper sx={{ p: 4, borderRadius: 2, bgcolor: "rgb(17, 23, 29)", color: "#fff" }}>
+                <Typography variant="h4" align="center" gutterBottom>
+                    Profile Dashboard
+                </Typography>
 
-                    <form onSubmit={onFinish}>
-                        <Grid2 container spacing={4}>
-                            {/* Profile Image with Edit Button */}
-                            <Grid2 size={{ xs: 12 }} align="center">
-                                <div style={{ position: "relative", display: "inline-block" }}>
-                                    <Avatar
-                                        src={userData.image}
-                                        sx={{ width: 200, height: 200, border: "3px solid var(--accent1)" }}
-                                    />
-                                    <IconButton
-                                        component="label"
-                                        style={{
-                                            position: "absolute",
-                                            bottom: 0,
-                                            right: 0,
-                                            backgroundColor: "rgb(17, 23, 29)",
-                                            border: "3px solid var(--accent1)",
-                                        }}
-                                    >
-                                        <Edit />
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            style={{ display: "none" }}
-                                            onChange={handleImagePreview}
-                                        />
-                                    </IconButton>
-                                </div>
-                            </Grid2>
+                <Grid2 container spacing={4} sx={{ mt: 2 }}>
+                    {/* User Image - Read Only */}
+                    <Grid2 size={{ xs: 12 }} align="center">
+                        <Avatar
+                            src={user?.image}
+                            sx={{ width: 180, height: 180, border: "3px solid var(--accent1)" }}
+                        />
+                        <Typography variant="caption" sx={{ mt: 1, display: "block", color: "gray" }}>
+                            Complete your profile to take part in events
+                        </Typography>
+                    </Grid2>
 
-                            {/* Name */}
-                            <Grid2 size={{ xs: 12, md: 6 }}>
-                                <TextField
-                                    fullWidth
-                                    label="Name"
-                                    name="name"
-                                    variant="outlined"
-                                    value={userData.name}
-                                    onChange={handleInputChange}
-                                    required
-                                    slotProps={{
-                                        input: {
-                                            startAdornment: <Person sx={{ mr: 1, color: "action.active" }} />,
-                                        },
-                                    }}
-                                />
-                            </Grid2>
-
-                            {/* Email */}
-                            <Grid2 size={{ xs: 12, md: 6 }}>
-                                <TextField
-                                    disabled
-                                    fullWidth
-                                    label="Email"
-                                    name="email"
-                                    variant="outlined"
-                                    type="email"
-                                    value={userData.email}
-                                    onChange={handleInputChange}
-                                    required
-                                    slotProps={{
-                                        input: {
-                                            startAdornment: <Email sx={{ mr: 1, color: "action.active" }} />,
-                                        },
-                                    }}
-                                />
-                            </Grid2>
-
-                            {/* Phone */}
-                            <Grid2 size={{ xs: 12, md: 6 }}>
-                                <TextField
-                                    fullWidth
-                                    label="Phone"
-                                    name="phone"
-                                    variant="outlined"
-                                    type="tel"
-                                    value={userData?.phone}
-                                    onChange={(e) => {
-                                        const value = e.target.value;
-                                        if (/^\d{0,10}$/.test(value)) {
-                                            // Only allows up to 10 digits
-                                            handleInputChange(e);
-                                        }
-                                    }}
-                                    required
-                                    slotProps={{
-                                        input: {
-                                            startAdornment: <InputAdornment position="start">+91</InputAdornment>,
-                                        },
-                                    }}
-                                    error={userData?.phone?.length > 0 && userData?.phone?.length !== 10}
-                                    helperText={
-                                        userData?.phone?.length > 0 && userData?.phone?.length !== 10
-                                            ? "Enter a valid 10-digit phone number"
-                                            : ""
-                                    }
-                                />
-                            </Grid2>
-
-                            {/* College */}
-                            <Grid2 size={{ xs: 12, md: 6 }}>
-                                <TextField
-                                    fullWidth
-                                    label="College"
-                                    name="college"
-                                    variant="outlined"
-                                    value={userData.college}
-                                    onChange={handleInputChange}
-                                    required
-                                    slotProps={{
-                                        input: {
-                                            startAdornment: <School sx={{ mr: 1, color: "action.active" }} />,
-                                        },
-                                    }}
-                                />
-                            </Grid2>
-
-                            {/* Department */}
-                            <Grid2 size={{ xs: 12, md: 6 }}>
-                                <TextField
-                                    fullWidth
-                                    label="Department"
-                                    name="dept"
-                                    variant="outlined"
-                                    value={userData.dept}
-                                    onChange={handleInputChange}
-                                    required
-                                    slotProps={{
-                                        input: {
-                                            startAdornment: <Engineering sx={{ mr: 1, color: "action.active" }} />,
-                                        },
-                                    }}
-                                />
-                            </Grid2>
-
-                            {/* Passout Year */}
-                            <Grid2 size={{ xs: 12, md: 6 }}>
-                                <TextField
-                                    fullWidth
-                                    label="Passout Year"
-                                    name="passout_year"
-                                    variant="outlined"
-                                    type="number"
-                                    value={userData.passout_year}
-                                    onChange={handleInputChange}
-                                    required
-                                    slotProps={{
-                                        input: {
-                                            startAdornment: <CalendarToday sx={{ mr: 1, color: "action.active" }} />,
-                                        },
-                                    }}
-                                />
-                            </Grid2>
-                        </Grid2>
-
-                        {/* Save Button */}
-                        <Grid2 xs={12} align="center" sx={{ mt: 4 }}>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                size="large"
-                                onClick={() => setDopen(true)}
-                                loading={loading}
-                                loadingPosition="start"
-                                endIcon={<Save />}
-                                disabled={userData?.phone?.length !== 10}
-                            >
-                                Save Changes
-                            </Button>
-                        </Grid2>
-                        <Dialog
-                            open={dopen}
-                            onClose={() => setDopen(false)}
-                            aria-labelledby="alert-dialog-title"
-                            aria-describedby="alert-dialog-description"
+                    <Grid2 size={{ xs: 12, md: 6 }}>
+                        <TextField
                             fullWidth
+                            label="Name"
+                            name="name"
+                            value={userData.name}
+                            onChange={handleInputChange}
+                            slotProps={{ input: { startAdornment: <Person sx={{ mr: 1 }} /> } }}
+                        />
+                    </Grid2>
+
+                    <Grid2 size={{ xs: 12, md: 6 }}>
+                        <TextField
+                            disabled
+                            fullWidth
+                            label="Email"
+                            name="email"
+                            value={userData.email}
+                            slotProps={{ input: { startAdornment: <Email sx={{ mr: 1 }} /> } }}
+                        />
+                    </Grid2>
+
+                    <Grid2 size={{ xs: 12, md: 6 }}>
+                        <TextField
+                            fullWidth
+                            label="Phone"
+                            name="phone"
+                            value={userData.phone}
+                            onChange={handleInputChange}
+                            error={userData.phone.length > 0 && userData.phone.length !== 10}
+                            helperText={
+                                userData.phone.length > 0 && userData.phone.length !== 10 ? "10 digits required" : ""
+                            }
+                            slotProps={{
+                                input: { startAdornment: <InputAdornment position="start">+91</InputAdornment> },
+                            }}
+                        />
+                    </Grid2>
+
+                    <Grid2 size={{ xs: 12, md: 6 }}>
+                        <TextField
+                            fullWidth
+                            label="College"
+                            name="college"
+                            value={userData.college}
+                            onChange={handleInputChange}
+                            slotProps={{ input: { startAdornment: <School sx={{ mr: 1 }} /> } }}
+                            disabled={user?.email.endsWith("iiests.ac.in")}
+                        />
+                    </Grid2>
+
+                    <Grid2 size={{ xs: 12, md: 6 }}>
+                        <TextField
+                            fullWidth
+                            label="Department"
+                            name="dept"
+                            value={userData.dept}
+                            onChange={handleInputChange}
+                            slotProps={{ input: { startAdornment: <Engineering sx={{ mr: 1 }} /> } }}
+                        />
+                    </Grid2>
+
+                    <Grid2 size={{ xs: 12, md: 6 }}>
+                        <TextField
+                            fullWidth
+                            label="Passout Year"
+                            name="passout_year"
+                            value={userData.passout_year}
+                            onChange={handleInputChange}
+                            slotProps={{ input: { startAdornment: <CalendarToday sx={{ mr: 1 }} /> } }}
+                            select
                         >
-                            <DialogTitle id="alert-dialog-title">{"Confirm Updation?"}</DialogTitle>
-                            <DialogContent>
-                                <DialogContentText id="alert-dialog-description">
-                                    Confirm your profile updation with the given data? You can always re-update this
-                                    information anytime!
-                                </DialogContentText>
-                            </DialogContent>
-                            <DialogActions>
-                                <Button
-                                    variant="error"
-                                    onClick={() => setDopen(false)}
-                                    sx={{ bgcolor: "#f44336", color: "#fff" }}
-                                >
-                                    Cancel
-                                </Button>
-                                <Button
-                                    type="submit"
-                                    variant="contained"
-                                    onClick={() => {
-                                        setDopen(false);
-                                        onFinish();
-                                    }}
-                                    sx={{ bgcolor: "var(--accent1)", color: "#fff" }}
-                                    autoFocus
-                                >
-                                    Okay
-                                </Button>
-                            </DialogActions>
-                        </Dialog>
-                    </form>
-                </Paper>
-                <Snackbar
-                    open={popup}
-                    autoHideDuration={5000}
-                    onClose={() => setPopUp(false)}
-                    anchorOrigin={{ vertical: "top", horizontal: "right" }}
-                >
-                    <Alert severity={severity} variant="filled" sx={{ width: "100%" }}>
-                        <AlertTitle>{messageTitle}</AlertTitle>
-                        {message}
-                    </Alert>
-                </Snackbar>
-            </Container>
-        )
+                            {Array.from({ length: 21 }, (_, i) => 2020 + i).map((year) => (
+                                <MenuItem key={year} value={year}>
+                                    {year}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                    </Grid2>
+
+                    <Grid2 size={{ xs: 12 }} align="center" sx={{ mt: 2 }}>
+                        <Button
+                            variant="contained"
+                            size="large"
+                            onClick={() => setDopen(true)}
+                            loading={loading}
+                            endIcon={<Save />}
+                            disabled={userData.phone.length !== 10 || !userData.name}
+                        >
+                            Save Changes
+                        </Button>
+                    </Grid2>
+                </Grid2>
+            </Paper>
+
+            {/* Confirmation Dialog */}
+            <Dialog open={dopen} onClose={() => setDopen(false)} fullWidth>
+                <DialogTitle>Confirm Update</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>Are you sure you want to update your profile information?</DialogContentText>
+                </DialogContent>
+                <DialogActions sx={{ p: 2 }}>
+                    <Button onClick={() => setDopen(false)} color="inherit">
+                        Cancel
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            setDopen(false);
+                            onFinish();
+                        }}
+                        variant="contained"
+                        autoFocus
+                    >
+                        Confirm
+                    </Button>
+                </DialogActions>
+            </Dialog>
+
+            {/* Notification Snackbar */}
+            <Snackbar
+                open={popup}
+                autoHideDuration={5000}
+                onClose={() => setPopUp(false)}
+                anchorOrigin={{ vertical: "top", horizontal: "right" }}
+            >
+                <Alert severity={severity} variant="filled" onClose={() => setPopUp(false)}>
+                    <AlertTitle>{messageTitle}</AlertTitle>
+                    {message}
+                </Alert>
+            </Snackbar>
+        </Container>
     );
 };
 

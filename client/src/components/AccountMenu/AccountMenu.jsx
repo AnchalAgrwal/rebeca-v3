@@ -37,7 +37,7 @@ export default function AccountMenu() {
 
     const handleEditProfile = () => {
         handleClose();
-        // navigate("/editProfile");
+        navigate("/userUpdate");
     };
 
     const handleLogoutClick = () => {
