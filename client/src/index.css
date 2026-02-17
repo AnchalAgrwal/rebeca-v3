@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
 
 :root {
-	font-family: "Exo 2", sans-serif;
 	font-optical-sizing: auto;
 	font-weight: 400;
 	font-style: normal;
@@ -13,15 +11,10 @@
 	/* color: rgba(255, 255, 255, 0.5); */
 	/* background-color: #171717; */
 
-	--accent1: #5075f6;
-	--accent1-50: rgba(80, 116, 246, 0.5);
-	--accent1dark: #3955ba;
-	--accent2: #705dea;
-	--accent3: #000001;
+	--accent1: #BE266E;
+	--accent2: #9B29CB;
 
 	--primary: var(--accent1);
-	--primary50: var(--accent1-50);
-	--primaryDark: var(--accent1dark);
 	--app-background: #0F1214;
 
 	font-synthesis: none;
@@ -34,20 +27,21 @@
 	box-sizing: border-box;
 	outline: none !important;
 }
-* {
+*, *::after, *::before {
 	margin: 0;
 	padding: 0;
 	outline: none;
 	border: none;
 	box-sizing: border-box;
+	font-family: "Agency FB", serif;
 }
 
 .display-font {
-	font-family: "Sedgwick Ave Display", cursive;
 	font-weight: 400;
 	font-style: normal;
 	color: white;
 	font-size: 3.5rem;
+	font-family: inherit;
 }
 
 a {
@@ -66,6 +60,7 @@ body {
 	min-width: 320px;
 	min-height: 100vh;
 	background-color: var(--app-background) !important;
+	font-family: "Agency FB", serif;
 }
 
 h1 {
@@ -79,7 +74,6 @@ h1 {
   border-radius: 20px !important;
   overflow: hidden;
   width: 5px;
-  border: 0px solid red;
   height: 90%;
   padding: 1rem;
 }
@@ -87,17 +81,16 @@ h1 {
 ::-webkit-scrollbar-track {
   /* height: 5px !important; */
   padding: 1rem;
-  border: 0px solid green;
 }
 
 ::-webkit-scrollbar-thumb {
   /* height: 5px !important; */
   border-radius: 10px;
-  background: var(--primary50);
+  background: var(--accent1);
   transition: 0.5s all;
 }
 ::-webkit-scrollbar-thumb:hover{
-	background: var(--primary);
+	background: var(--accent2);
 }
 /* ::-webkit-scrollbar-button,
 ::-webkit-scrollbar-corner {
