@@ -4,6 +4,7 @@ import "./CustomAvatar.css";
 import React from "react";
 
 const CustomAvatar = ({ title, subtitle, src, phone, icon }) => {
+    console.log(title)
     return (
         <div className="avatar">
             <Badge

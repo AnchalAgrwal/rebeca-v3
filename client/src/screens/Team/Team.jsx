@@ -159,7 +159,7 @@ const Team = () => {
                                             borderRadius: "5px",
                                         }}
                                     >
-                                        {teamData.members.filter((member) => member.position==='head').map((member, ki) => {
+                                        {teamData.members.filter((member) => member.position==='Head').map((member, ki) => {
                                             return (
                                                 <CustomAvatar
                                                     title={member.name}
@@ -172,7 +172,7 @@ const Team = () => {
                                             );
                                         })}
                                         
-                                        {teamData.members.filter((member) => member.position==='associate head').map((member, ki) => {
+                                        {teamData.members.filter((member) => member.position==='Associate Head').map((member, ki) => {
                                             return (
                                                 <CustomAvatar
                                                     title={member.name}
@@ -185,7 +185,7 @@ const Team = () => {
                                             );
                                         })}
                                         
-                                        {teamData.members.filter((member) => member.position==='associate').map((member, ki) => {
+                                        {teamData.members.filter((member) => member.position==='Associate').map((member, ki) => {
                                             return (
                                                 <CustomAvatar
                                                     title={member.name}

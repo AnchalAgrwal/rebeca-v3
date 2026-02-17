@@ -1,428 +1,238 @@
 [
     {
         "id": 1,
-        "name": "Main Coordinator",
+        "team": "Secretary General",
         "members": [
-            {
-                "name": "Ayush Tejaswi",
-                "position": "Main Coordinator",
-                "img": "./assets/Team/ayush_tejaswi.webp"
-            },
-            {
-                "name": "Satish Kumar Gupta",
-                "position": "Main Coordinator",
-                "img": "./assets/Team/satish_gupta.webp"
-            },
-            {
-                "name": "Aaratrika Sarkar",
-                "position": "Main Coordinator",
-                "img": "./assets/Team/aaratrika_sarkar.webp"
-            }
+            { "name": "Ayush Tejaswi", "position": "Head", "img": "./assets/Team/ayush_tejaswi.webp" },
+            { "name": "Satish Kumar Gupta", "position": "Associate Head", "img": "./assets/Team/satish_gupta.webp" },
+            { "name": "Aaratrika Sarkar", "position": "Associate Head", "img": "./assets/Team/aaratrika_sarkar.webp" },
+            { "name": "Ishaan Sharma", "position": "Associate", "img": "./assets/Team/ishaan_sharma.webp" },
+            { "name": "Ananya Chatterjee", "position": "Associate", "img": "./assets/Team/ananya_chatterjee.webp" },
+            { "name": "Siddharth Malhotra", "position": "Associate", "img": "./assets/Team/siddharth_malhotra.webp" }
         ]
     },
     {
         "id": 2,
-        "name": "Joint Coordinator",
+        "team": "Finance",
         "members": [
-            {
-                "name": "Sohom Chakraborty",
-                "position": "Executive",
-                "img": "./assets/Team/sohom_chakraborty.webp"
-            },
-            {
-                "name": "Pranjal Diwakar",
-                "position": "Executive",
-                "img": "./assets/Team/pranjal_diwakar.webp"
-            }
+            { "name": "Rahul Sharma", "position": "Head", "img": "./assets/Team/rahul_sharma.webp" },
+            { "name": "Priya Singh", "position": "Associate Head", "img": "./assets/Team/priya_singh.webp" },
+            { "name": "Vikram Seth", "position": "Associate Head", "img": "./assets/Team/vikram_seth.webp" },
+            { "name": "Sneha Roy", "position": "Associate", "img": "./assets/Team/sneha_roy.webp" },
+            { "name": "Amitabh Vora", "position": "Associate", "img": "./assets/Team/amitabh_vora.webp" },
+            { "name": "Rohan Mehra", "position": "Associate", "img": "./assets/Team/rohan_mehra.webp" }
         ]
     },
     {
         "id": 3,
-        "name": "Finance",
+        "team": "Cultural",
         "members": [
-            {
-                "name": "Saurav Kumar",
-                "position": "Head",
-                "img": "./assets/Team/saurav_kumar.webp"
-            },
-            {
-                "name": "Shreyansh Srivastava",
-                "position": "Head",
-                "img": "./assets/Team/shreyansh_srivastava.webp"
-            },
-            {
-                "name": "Arman Chaudhary",
-                "position": "Head",
-                "img": "./assets/Team/arman_chaudhary.webp"
-            },
-            {
-                "name": "Ayush Ranjan",
-                "position": "Executive",
-                "img": "./assets/Team/ayush_ranjan.webp"
-            }
+            { "name": "Ishita Das", "position": "Head", "img": "./assets/Team/ishita_das.webp" },
+            { "name": "Arjun Mehra", "position": "Associate Head", "img": "./assets/Team/arjun_mehra.webp" },
+            { "name": "Sanya Malhotra", "position": "Associate Head", "img": "./assets/Team/sanya_malhotra.webp" },
+            { "name": "Rohan Joshi", "position": "Associate", "img": "./assets/Team/rohan_joshi.webp" },
+            { "name": "Kriti Sanon", "position": "Associate", "img": "./assets/Team/kriti_sanon.webp" },
+            { "name": "Varun Thakur", "position": "Associate", "img": "./assets/Team/varun_thakur.webp" }
         ]
     },
     {
         "id": 4,
-        "name": "Sponsorship",
+        "team": "Event",
         "members": [
-            {
-                "name": "Sujan Sharma",
-                "position": "Head",
-                "img": "./assets/Team/sujan_sharma.webp"
-            },
-            {
-                "name": "Shivansh Mahobiya",
-                "position": "Head",
-                "img": "./assets/Team/shivansh_mahobiya.webp"
-            },
-            {
-                "name": "Archit Ranjan",
-                "position": "Head",
-                "img": "./assets/Team/archit_ranjan.webp"
-            },
-
-            {
-                "name": "Harsh Agrawal",
-                "position": "Head",
-                "img": "./assets/Team/harsh_agrawal.webp"
-            },
-            {
-                "name": "Pranjal Batesar",
-                "position": "Head",
-                "img": "./assets/Team/pranjal_batesar.webp"
-            },
-            {
-                "name": "Shloka vyas",
-                "position": "Executive",
-                "img": "./assets/Team/shloka_vyas.webp"
-            },
-            {
-                "name": "Ayush Sarkar",
-                "position": "Executive",
-                "img": "./assets/Team/ayush_sarkar.webp"
-            },
-            {
-                "name": "Anjali Kumari",
-                "position": "Executive",
-                "img": "./assets/Team/anjali_kumari.webp"
-            },
-            {
-                "name": "Gourav Devpura",
-                "position": "Executive",
-                "img": "./assets/Team/gourav_devpura.webp"
-            }
+            { "name": "Sneha Kapoor", "position": "Head", "img": "./assets/Team/sneha_kapoor.webp" },
+            { "name": "Vikram Rathore", "position": "Associate Head", "img": "./assets/Team/vikram_rathore.webp" },
+            { "name": "Zoya Akhtar", "position": "Associate Head", "img": "./assets/Team/zoya_akhtar.webp" },
+            { "name": "Farhan Ahmed", "position": "Associate", "img": "./assets/Team/farhan_ahmed.webp" },
+            { "name": "Diya Mirza", "position": "Associate", "img": "./assets/Team/diya_mirza.webp" },
+            { "name": "Kabir Khan", "position": "Associate", "img": "./assets/Team/kabir_khan.webp" }
         ]
     },
     {
         "id": 5,
-        "name": "Event",
+        "team": "Resource Information",
         "members": [
-            {
-                "name": "Yaswanth Pedapudi",
-                "position": "Head",
-                "img": "./assets/Team/yaswanth_pedapudi.webp"
-            },
-            {
-                "name": "Vikash Gopalak",
-                "position": "Head",
-                "img": "./assets/Team/vikash_gopalak.webp"
-            },
-            {
-                "name": "Sangeet Gunwant Dhabare",
-                "position": "Head",
-                "img": "./assets/Team/sangeet_gunwant_dhabare.webp"
-            },
-            {
-                "name": "Manmeet Kaur",
-                "position": "Head",
-                "img": "./assets/Team/manmeet_kaur.webp"
-            },
-            {
-                "name": "Vipin Kumar Chaudhary",
-                "position": "Executive",
-                "img": "./assets/Team/vipin_kumar_chaudhary.webp"
-            },
-            {
-                "name": "Mohit Yadav",
-                "position": "Executive",
-                "img": "./assets/Team/mohit_yadav.webp"
-            },
-
-            {
-                "name": "Shubham Verma",
-                "position": "Executive",
-                "img": "./assets/Team/shubham_verma.webp"
-            },
-            {
-                "name": "Ankita Balu Sapkal",
-                "position": "Executive",
-                "img": "./assets/Team/ankita_balu_sapkal.webp"
-            },
-            {
-                "name": "Sanket Mahantappa Mahajan",
-                "position": "Executive",
-                "img": "./assets/Team/sanket_mahantappa_mahajan.webp"
-            }
+            { "name": "Amit Verma", "position": "Head", "img": "./assets/Team/amit_verma.webp" },
+            { "name": "Pooja Hegde", "position": "Associate Head", "img": "./assets/Team/pooja_hegde.webp" },
+            { "name": "Varun Dhawan", "position": "Associate Head", "img": "./assets/Team/varun_dhawan.webp" },
+            { "name": "Sara Ali", "position": "Associate", "img": "./assets/Team/sara_ali.webp" },
+            { "name": "Kartik Aaryan", "position": "Associate", "img": "./assets/Team/kartik_aaryan.webp" },
+            { "name": "Janhvi Kapoor", "position": "Associate", "img": "./assets/Team/janhvi_kapoor.webp" }
         ]
     },
     {
         "id": 6,
-        "name": "Robodarshan",
+        "team": "Travel & Logistics",
         "members": [
-            {
-                "name": "Anurag Chaurasia",
-                "position": "Head",
-                "img": "./assets/Team/anurag_chaurasia.webp"
-            },
-            {
-                "name": "Harshit kasera",
-                "position": "Head",
-                "img": "./assets/Team/harshit_kasera.webp"
-            },
-
-            {
-                "name": "Naveen jakkula",
-                "position": "Head",
-                "img": "./assets/Team/naveen_jakkula.webp"
-            }
+            { "name": "Rohan Jha", "position": "Head", "img": "./assets/Team/rohan_jha.webp" },
+            { "name": "Karan Malhotra", "position": "Associate Head", "img": "./assets/Team/karan_malhotra.webp" },
+            { "name": "Deepika Paul", "position": "Associate Head", "img": "./assets/Team/deepika_paul.webp" },
+            { "name": "Ranveer Singh", "position": "Associate", "img": "./assets/Team/ranveer_singh.webp" },
+            { "name": "Alia Bhatt", "position": "Associate", "img": "./assets/Team/alia_bhatt.webp" },
+            { "name": "Saif Ali", "position": "Associate", "img": "./assets/Team/saif_ali.webp" }
         ]
     },
     {
         "id": 7,
-        "name": "Travel and Logistics",
+        "team": "Sponsorship",
         "members": [
-            {
-                "name": "Aniket Chadramohan Nimje",
-                "position": "Head",
-                "img": "./assets/Team/aniket_chadramohan_nimje.webp"
-            },
-            {
-                "name": "Umashankar",
-                "position": "Head",
-                "img": "./assets/Team/umashankar.webp"
-            },
-            {
-                "name": "Talapaneni Varun Chowdary ",
-                "position": "Head",
-                "img": "./assets/Team/talapaneni_varun_chowdary.webp"
-            },
-
-            {
-                "name": "Vedant Dhanraj Bagde",
-                "position": "Head",
-                "img": "./assets/Team/vedant_dhanraj_bagde.webp"
-            },
-            {
-                "name": "Sanskriti Ray",
-                "position": "Head",
-                "img": "./assets/Team/sanskriti_ray.webp"
-            },
-            {
-                "name": "Rohan Vikas kudtudkar",
-                "position": "Executive",
-                "img": "./assets/Team/rohan_vikas_kudtudkar.webp"
-            },
-            {
-                "name": "Erikilla Ashish",
-                "position": "Executive",
-                "img": "./assets/Team/erikilla_ashish.webp"
-            },
-            {
-                "name": "Subhoshri Pal",
-                "position": "Executive",
-                "img": "./assets/Team/subhoshri_pal.webp"
-            },
-            {
-                "name": "Dipam Nayek",
-                "position": "Executive",
-                "img": "./assets/Team/dipam_nayek.webp"
-            }
+            { "name": "Ananya Roy", "position": "Head", "img": "./assets/Team/ananya_roy.webp" },
+            { "name": "Siddharth Jain", "position": "Associate Head", "img": "./assets/Team/siddharth_jain.webp" },
+            { "name": "Kiara Advani", "position": "Associate Head", "img": "./assets/Team/kiara_advani.webp" },
+            { "name": "Sid Gupta", "position": "Associate", "img": "./assets/Team/sid_gupta.webp" },
+            { "name": "Mira Rajput", "position": "Associate", "img": "./assets/Team/mira_put.webp" },
+            { "name": "Ishaan Khatter", "position": "Associate", "img": "./assets/Team/ishaan_khatter.webp" }
         ]
     },
     {
         "id": 8,
-        "name": "Web Development",
+        "team": "Publication",
         "members": [
-            {
-                "name": "Abhijit Karmakar",
-                "position": "Head",
-                "img": "./assets/Team/abhijit_karmakar.webp"
-            },
-            {
-                "name": "Soumyajit Karmakar",
-                "position": "Head",
-                "img": "./assets/Team/soumyajit_karmakar.webp"
-            },
-            {
-                "name": "Mohak Singh",
-                "position": "Head",
-                "img": "./assets/Team/mohak_singh.webp"
-            },
-            {
-                "name": "Harsh Ranjan",
-                "position": "Head",
-                "img": "./assets/Team/harsh_ranjan.webp"
-            },
-            {
-                "name": "Anish Mansuri",
-                "position": "Executive",
-                "img": "./assets/Team/anish_mansuri.webp"
-            },
-            {
-                "name": "Surya Pratap Singh",
-                "position": "Executive",
-                "img": "./assets/Team/surya_pratap_singh.webp"
-            }
+            { "name": "Tanvi Goyal", "position": "Head", "img": "./assets/Team/tanvi_goyal.webp" },
+            { "name": "Manan Vora", "position": "Associate Head", "img": "./assets/Team/manan_vora.webp" },
+            { "name": "Radhika Apte", "position": "Associate Head", "img": "./assets/Team/radhika_apte.webp" },
+            { "name": "Ayushmann Khurrana", "position": "Associate", "img": "./assets/Team/ayushmann_khurrana.webp" },
+            { "name": "Tabu Hashmi", "position": "Associate", "img": "./assets/Team/tabu_hashmi.webp" },
+            { "name": "Jim Sarbh", "position": "Associate", "img": "./assets/Team/jim_sarbh.webp" }
         ]
     },
     {
         "id": 9,
-        "name": "App Development",
+        "team": "Publicity",
         "members": [
-            {
-                "name": "Harshit Kumar",
-                "position": "Head",
-                "img": "./assets/Team/harshit_kumar_it.webp"
-            },
-            {
-                "name": "Subhranil Nandy",
-                "position": "Head",
-                "img": "./assets/Team/subhranil_nandy.webp"
-            }
+            { "name": "Aditya Rao", "position": "Head", "img": "./assets/Team/aditya_rao.webp" },
+            { "name": "Megha Bisht", "position": "Associate Head", "img": "./assets/Team/megha_bisht.webp" },
+            { "name": "Tiger Shroff", "position": "Associate Head", "img": "./assets/Team/tiger_shroff.webp" },
+            { "name": "Disha Patani", "position": "Associate", "img": "./assets/Team/disha_patani.webp" },
+            { "name": "Vicky Kaushal", "position": "Associate", "img": "./assets/Team/vicky_kaushal.webp" },
+            { "name": "Katrina Kaif", "position": "Associate", "img": "./assets/Team/katrina_kaif.webp" }
         ]
     },
     {
         "id": 10,
-        "name": "Design and Content",
+        "team": "Stage Decoration",
         "members": [
-            {
-                "name": "Sandeep Sankuru",
-                "position": "Head",
-                "img": "./assets/Team/sandeep_sankuru.webp"
-            },
-            {
-                "name": "Debo Priya Dalal",
-                "position": "Head",
-                "img": "./assets/Team/debo_priya_dalal.webp"
-            },
-            {
-                "name": "Shinjini Roy",
-                "position": "Head",
-                "img": "./assets/Team/shinjini_roy.webp"
-            },
-            {
-                "name": "Arka mondal",
-                "position": "Executive",
-                "img": "./assets/Team/arka_mondal.webp"
-            },
-            {
-                "name": "Debaditya Nath",
-                "position": "Executive",
-                "img": "./assets/Team/debaditya_nath.webp"
-            },
-            {
-                "name": "Dubakula Nithin Kumar",
-                "position": "Executive",
-                "img": "./assets/Team/dubakula_nithin_kumar.webp"
-            }
+            { "name": "Ritika Sen", "position": "Head", "img": "./assets/Team/ritika_sen.webp" },
+            { "name": "Sushant Singh", "position": "Associate Head", "img": "./assets/Team/sushant_singh.webp" },
+            { "name": "Shraddha Kapoor", "position": "Associate Head", "img": "./assets/Team/shraddha_kapoor.webp" },
+            { "name": "Rajkumar Rao", "position": "Associate", "img": "./assets/Team/rajkumar_rao.webp" },
+            { "name": "Bhumi Pednekar", "position": "Associate", "img": "./assets/Team/bhumi_pednekar.webp" },
+            { "name": "Ayush Mehra", "position": "Associate", "img": "./assets/Team/ayush_mehra.webp" }
         ]
     },
     {
         "id": 11,
-        "name": "Publicity",
+        "team": "Business & Alumni Meet",
         "members": [
-            {
-                "name": "Sai Prasad",
-                "position": "Head",
-                "img": "./assets/Team/sai_prasad.webp"
-            },
-            {
-                "name": "Saptarshi Chatterjee",
-                "position": "Head",
-                "img": "./assets/Team/saptarshi_chatterjee.webp"
-            },
-            {
-                "name": "Shubh Ashutosh",
-                "position": "Head",
-                "img": "./assets/Team/shubh_ashutosh.webp"
-            },
-            {
-                "name": "Madhire Kalyan Sathwik",
-                "position": "Head",
-                "img": "./assets/Team/madhire_kalyan_sathwik.webp"
-            },
-            {
-                "name": "Sagnik Ganguly",
-                "position": "Executive",
-                "img": "./assets/Team/sagnik_ganguly.webp"
-            },
-            {
-                "name": "Aditya Raj Verma",
-                "position": "Executive",
-                "img": "./assets/Team/aditya_raj_verma.webp"
-            },
-            {
-                "name": "Ankit Kumar",
-                "position": "Executive",
-                "img": "./assets/Team/ankit_kumar.webp"
-            },
-            {
-                "name": "Raj Bharti",
-                "position": "Executive",
-                "img": "./assets/Team/raj_bharti.webp"
-            },
-            {
-                "name": "Nirupama Thakur",
-                "position": "Executive",
-                "img": "./assets/Team/nirupama_thakur.webp"
-            }
+            { "name": "Sameer Khan", "position": "Head", "img": "./assets/Team/sameer_khan.webp" },
+            { "name": "Vidya Balan", "position": "Associate Head", "img": "./assets/Team/vidya_balan.webp" },
+            { "name": "Pankaj Tripathi", "position": "Associate Head", "img": "./assets/Team/pankaj_tripathi.webp" },
+            { "name": "Nawazuddin Siddiqui", "position": "Associate", "img": "./assets/Team/nawazuddin_siddiqui.webp" },
+            { "name": "Manoj Bajpayee", "position": "Associate", "img": "./assets/Team/manoj_bajpayee.webp" },
+            { "name": "Kay Kay Menon", "position": "Associate", "img": "./assets/Team/kay_kay_menon.webp" }
         ]
     },
     {
         "id": 12,
-        "name": "Volunteer",
+        "team": "Competition and Seminars",
         "members": [
+            { "name": "Deepak Kumar", "position": "Head", "img": "./assets/Team/deepak_kumar.webp" },
+            { "name": "Taapsee Pannu", "position": "Associate Head", "img": "./assets/Team/taapsee_pannu.webp" },
             {
-                "name": "Harshit kumar",
-                "position": "Head",
-                "img": "./assets/Team/harshit_kumar.webp"
+                "name": "Abhishek Bachchan",
+                "position": "Associate Head",
+                "img": "./assets/Team/abhishek_bachchan.webp"
             },
+            { "name": "Aishwarya Rai", "position": "Associate", "img": "./assets/Team/aishwarya_rai.webp" },
+            { "name": "Kajol Devgan", "position": "Associate", "img": "./assets/Team/kajol_devgan.webp" },
+            { "name": "Rani Mukerji", "position": "Associate", "img": "./assets/Team/rani_mukerji.webp" }
+        ]
+    },
+    {
+        "id": 13,
+        "team": "Web Development",
+        "members": [
+            { "name": "Sahil Gupta", "position": "Head", "img": "./assets/Team/sahil_gupta.webp" },
+            { "name": "Nidhi Aggarwal", "position": "Associate Head", "img": "./assets/Team/nidhi_aggarwal.webp" },
+            { "name": "Satya Nadella", "position": "Associate Head", "img": "./assets/Team/satya_nadella.webp" },
+            { "name": "Sundar Pichai", "position": "Associate", "img": "./assets/Team/sundar_pichai.webp" },
+            { "name": "Elon Musk", "position": "Associate", "img": "./assets/Team/elon_musk.webp" },
+            { "name": "Mark Zuckerberg", "position": "Associate", "img": "./assets/Team/mark_zuckerberg.webp" }
+        ]
+    },
+    {
+        "id": 14,
+        "team": "Refreshments",
+        "members": [
+            { "name": "Harshvardhan", "position": "Head", "img": "./assets/Team/harshvardhan.webp" },
+            { "name": "Sanjeev Kapoor", "position": "Associate Head", "img": "./assets/Team/sanjeev_kapoor.webp" },
+            { "name": "Vikas Khanna", "position": "Associate Head", "img": "./assets/Team/vikas_khanna.webp" },
+            { "name": "Ranveer Brar", "position": "Associate", "img": "./assets/Team/ranveer_brar.webp" },
+            { "name": "Garima Arora", "position": "Associate", "img": "./assets/Team/garima_arora.webp" },
+            { "name": "Kun Kapur", "position": "Associate", "img": "./assets/Team/kun_kapur.webp" }
+        ]
+    },
+    {
+        "id": 15,
+        "team": "Volunteers",
+        "members": [
+            { "name": "Yash Patel", "position": "Head", "img": "./assets/Team/yash_patel.webp" },
+            { "name": "Sonu Sood", "position": "Associate Head", "img": "./assets/Team/sonu_sood.webp" },
             {
-                "name": "Achintya Sandilya",
-                "position": "Head",
-                "img": "./assets/Team/achintya_sandilya.webp"
+                "name": "Jacqueline Fernandez",
+                "position": "Associate Head",
+                "img": "./assets/Team/jacqueline_fernandez.webp"
             },
-            {
-                "name": "Kushal Rana",
-                "position": "Head",
-                "img": "./assets/Team/kushal_rana.webp"
-            },
-            {
-                "name": "Bhumika Verma",
-                "position": "Head",
-                "img": "./assets/Team/bhumika_verma.webp"
-            },
-            {
-                "name": "Raunak Sarkar",
-                "position": "Head",
-                "img": "./assets/Team/raunak_sarkar.webp"
-            },
-            {
-                "name": "Supriyo Barman",
-                "position": "Executive",
-                "img": "./assets/Team/supriyo_barman.webp"
-            },
-            {
-                "name": "Adesh pal",
-                "position": "Executive",
-                "img": "./assets/Team/adesh_pal.webp"
-            },
-            {
-                "name": "Jigyasha Kumari",
-                "position": "Executive",
-                "img": "./assets/Team/jigyasha_kumari.webp"
-            }
+            { "name": "Varun Sharma", "position": "Associate", "img": "./assets/Team/varun_sharma.webp" },
+            { "name": "Katrina Kaif", "position": "Associate", "img": "./assets/Team/katrina_kaif.webp" },
+            { "name": "Arjun Kapoor", "position": "Associate", "img": "./assets/Team/arjun_kapoor.webp" }
+        ]
+    },
+    {
+        "id": 16,
+        "team": "Photography",
+        "members": [
+            { "name": "Abhishek Paul", "position": "Head", "img": "./assets/Team/abhishek_paul.webp" },
+            { "name": "Daboo Ratnani", "position": "Associate Head", "img": "./assets/Team/daboo_ratnani.webp" },
+            { "name": "Raghu Rai", "position": "Associate Head", "img": "./assets/Team/raghu_rai.webp" },
+            { "name": "Sobhita Dhulipala", "position": "Associate", "img": "./assets/Team/sobhita_dhulipala.webp" },
+            { "name": "Jim Sarbh", "position": "Associate", "img": "./assets/Team/jim_sarbh.webp" },
+            { "name": "Vijay Varma", "position": "Associate", "img": "./assets/Team/vijay_varma.webp" }
+        ]
+    },
+    {
+        "id": 17,
+        "team": "Joint Secretary",
+        "members": [
+            { "name": "Divya Shetty", "position": "Head", "img": "./assets/Team/divya_shetty.webp" },
+            { "name": "Ibrahim Ali", "position": "Associate Head", "img": "./assets/Team/ibrahim_ali.webp" },
+            { "name": "Suhana Khan", "position": "Associate Head", "img": "./assets/Team/suhana_khan.webp" },
+            { "name": "Khushi Kapoor", "position": "Associate", "img": "./assets/Team/khushi_kapoor.webp" },
+            { "name": "Agastya Nanda", "position": "Associate", "img": "./assets/Team/agastya_nanda.webp" },
+            { "name": "Shanaya Kapoor", "position": "Associate", "img": "./assets/Team/shanaya_kapoor.webp" }
+        ]
+    },
+    {
+        "id": 18,
+        "team": "Fixed Signatory",
+        "members": [
+            { "name": "Manish Tiwari", "position": "Head", "img": "./assets/Team/manish_tiwari.webp" },
+            { "name": "Ratan Tata", "position": "Associate Head", "img": "./assets/Team/ratan_tata.webp" },
+            { "name": "Mukesh Ambani", "position": "Associate Head", "img": "./assets/Team/mukesh_ambani.webp" },
+            { "name": "Kumar Mangalam", "position": "Associate", "img": "./assets/Team/kumar_mangalam.webp" },
+            { "name": "Anand Mahindra", "position": "Associate", "img": "./assets/Team/anand_mahindra.webp" },
+            { "name": "Gautam Adani", "position": "Associate", "img": "./assets/Team/gautam_adani.webp" }
+        ]
+    },
+    {
+        "id": 19,
+        "team": "BECA Magazine",
+        "members": [
+            { "name": "Kavita Reddy", "position": "Head", "img": "./assets/Team/kavita_reddy.webp" },
+            { "name": "Shashi Tharoor", "position": "Associate Head", "img": "./assets/Team/shashi_tharoor.webp" },
+            { "name": "Arundhati Roy", "position": "Associate Head", "img": "./assets/Team/arundhati_roy.webp" },
+            { "name": "Vikram Seth", "position": "Associate", "img": "./assets/Team/vikram_seth.webp" },
+            { "name": "Jhumpa Lahiri", "position": "Associate", "img": "./assets/Team/jhumpa_lahiri.webp" },
+            { "name": "Anita Desai", "position": "Associate", "img": "./assets/Team/anita_desai.webp" }
         ]
     }
 ]

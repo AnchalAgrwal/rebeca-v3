@@ -46,28 +46,6 @@ export const skeleton = [
     { id: 19, team: "BECA Magazine", members: [], icon: <MenuBook /> },
 ];
 
-const teamNameToId = {
-    "Secretary General": 1,
-    Finance: 2,
-    Cultural: 3,
-    Event: 4,
-    "Resource Information": 5,
-    "Travel & Logistics": 6,
-    Sponsorship: 7,
-    Publication: 8,
-    Publicity: 9,
-    "Stage Decoration": 10,
-    "Business & Alumni Meet": 11,
-    "Competition and Seminars": 12,
-    "Web Development": 13,
-    Refreshments: 14,
-    Volunteers: 15,
-    Photography: 16,
-    "Joint Secretary": 17,
-    "Fixed Signatory": 18,
-    "BECA Magazine": 19,
-};
-
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [userLoad, setUserLoad] = useState(false);
