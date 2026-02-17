@@ -195,7 +195,7 @@ justify-content: flex-start;
 }
 
 .schedule .eheading:hover {
-  color: var(--accent3);
+  color: #000;
 }
 
 .schedule a {

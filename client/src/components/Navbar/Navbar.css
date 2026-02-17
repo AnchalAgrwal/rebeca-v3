@@ -3,22 +3,14 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
     border: 0px solid red;
     padding: 10px 1rem;
-    /* background: var(--teal); */
     background-color: var(--app-background);
-    /* background: black; */
     margin: 0;
-    /* backdrop-filter: blur(20px); */
-    /* filter: hue-rotate(90deg); */
-    /* box-shadow: 0px 4px 83px 0px rgba(59, 59, 59, 0.14); */
-    /* positio%n: fixed; */
     width: 100%;
     height: 65px;
     position: fixed;
     z-index: 100;
-    /* overflow-x: hidden; */
     color: black;
     border: 0px solid yellow;
 }
@@ -33,7 +25,6 @@
 }
 .navbar .left-col .logo {
     width: 150px;
-    /* padding: 1rem; */
 }
 .navbar .left-col .logo img {
     width: 100%;
@@ -44,10 +35,8 @@
     justify-content: space-between;
     align-items: center;
     gap: 40px;
-    /* color: var(--purple); */
     color: white;
     transition: 0.25s all;
-    /* padding-top: 30px; */
     height: 100%;
     border: 0px solid red;
 }
@@ -58,10 +47,8 @@
 
     font-size: 1.1rem;
     color: var(--purple);
-    color: rgba(255, 255, 255, 0.527);
+    color: rgb(255, 255, 255);
     position: relative;
-    /* border: 0px solid green; */
-    /* height: 100%; */
     transition: 0.25s all;
     display: flex;
     flex-direction: row;
@@ -88,10 +75,6 @@
 .navbar .nav-items .item.active::before {
     transform: scaleX(1);
 }
-/* .MuiDrawer-root .MuiPaper-root {
-    background-color: #171717;
-    color: white;
-} */
 
 .MuiPaper-root::before {
     background-color: #1D1D1D !important;
