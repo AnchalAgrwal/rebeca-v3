@@ -9,7 +9,6 @@ import sponsorJsonData from "../../assets/data/sponsors.json";
 import { Divider, Typography } from "@mui/material";
 import SponsorsMarquee  from "../../components/SponsorsMarquee/SponsorsMarquee";
 import WhySponsorBento from "../../components/WhySponsorBento/WhySponsorBento";
-import SponsorTiers from "../../components/SponsorTiers/SponsorTiers";
 import SponsorSkillTree from "../../components/SponsorSkillTree/SponsorSkillTree";
 
 const Heading1 = ({ title, subTitle, w }) => {
