@@ -164,7 +164,7 @@ const Team = () => {
                                                 <CustomAvatar
                                                     title={member.name}
                                                     src={member.img}
-                                                    subtitle={member.tagline}
+                                                    // subtitle={member.tagline}
                                                     phone={member.phone}
                                                     icon={skeleton[i].icon}
                                                     key={ki}
