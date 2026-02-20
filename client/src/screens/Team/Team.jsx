@@ -51,7 +51,7 @@ function ProfessorsList() {
                 margin: "0 2rem",
                 gap: 5,
                 borderRadius: "5px",
-                bgcolor: "hsla(237, 100%, 70%, 0.2)",
+                bgcolor: "#c234ff36",
                 display: "flex",
                 flexWrap: "wrap",
                 justifyContent: "center",

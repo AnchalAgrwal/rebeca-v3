@@ -3,34 +3,13 @@ import { Drawer, Avatar, Menu, MenuItem, IconButton, Typography, Button, Box } f
 import ResponsiveDrawer from "./ResponsiveDrawer";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
-// import Progressbar from "../Progressbar/Progressbar";
-// import LoginForm from "../Login/LoginForm";
-import React from "react";
 import { useAuth } from "../../AuthContext";
 import AccountMenu from "../AccountMenu/AccountMenu";
 import MenuIcon from "@mui/icons-material/Menu";
-import { checkAuthStatus, loginWithGoogle, logoutUser } from "../../services/api";
 
 const Navbar = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const { innerWidth: width, innerHeight: height } = window;
-    const [loginOpen, setLoginOpen] = useState(false);
-
-    const { user, handleLogin, handleLogout } = useAuth();
-    // const isLoggedIn = async () => {
-    //     try {
-    //         if (!user) return;
-    //         console.log(res?.data?.message);
-    //         handleLogin(res?.data?.user);
-    //     } catch (err) {
-    //         console.log("status check fail");
-    //         console.log(err.message);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     isLoggedIn();
-    // }, []);
 
     const handleDrawerOpen = () => {
         setDrawerOpen(true);
@@ -90,18 +69,6 @@ const Navbar = () => {
                             <NavLink id="nav-merchandise" to="/merchandise" className={"item"}>
                                 Merchandise
                             </NavLink>
-
-                            {/* {user ? (
-                                <AvatarMenu user={user} handleLogout={handleLogout} />
-                            ) : (
-                                <div className="">
-                                    <Button
-                                        variant="filled"
-                                        innerText={"Log in"}
-                                        onClick={() => setLoginOpen((t) => t ^ 1)}
-                                    />
-                                </div>
-                            )} */}
                             <AccountMenu />
                         </>
                     )}

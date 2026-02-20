@@ -13,8 +13,9 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import { AuthProvider } from "./AuthContext.jsx";
 import Preloader from "./components/Preloader/Preloader.jsx";
 import DrawingLoader from "./components/Preloader/DrawingLoader.jsx";
+import ScrollSmoother from "./components/ScrollSmoother/ScrollSMoother.jsx";
 
-const client_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID
+const client_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 export const nights = { saptami: 19, ashtami: 20, navami: 21, dashami: 22 };
 
 const darkTheme = createTheme({
@@ -37,28 +38,33 @@ const darkTheme = createTheme({
     },
 });
 
-function App() {   
-    const [isLoading, setIsLoading] = useState(true);  
-      
+function App() {
+    const [isLoading, setIsLoading] = useState(true);
+
     return (
-        <GoogleOAuthProvider clientId={client_ID}>
-            {isLoading && <DrawingLoader onComplete={() => setIsLoading(false)} />}
-            <div className="App" style={{ visibility: isLoading ? 'hidden' : 'visible', transition: 'visibility 0.3s ease' }}>
-                <ThemeProvider theme={darkTheme}>
-                    <CssBaseline />
-                    <SpeedInsights />
-                    <Analytics />
-                    <AuthProvider>
-                        <Router>
-                            <Navbar></Navbar>
-                            <AllRoutes></AllRoutes>
-                            {/* <Footer></Footer> */}
-                            <Footer2></Footer2>
-                        </Router>
-                    </AuthProvider>
-                </ThemeProvider>
-            </div>
-        </GoogleOAuthProvider>
+        <ScrollSmoother>
+            <GoogleOAuthProvider clientId={client_ID}>
+                {isLoading && <DrawingLoader onComplete={() => setIsLoading(false)} />}
+                <div
+                    className="App"
+                    style={{ visibility: isLoading ? "hidden" : "visible", transition: "visibility 0.3s ease" }}
+                >
+                    <ThemeProvider theme={darkTheme}>
+                        <CssBaseline />
+                        <SpeedInsights />
+                        <Analytics />
+                        <AuthProvider>
+                            <Router>
+                                <Navbar></Navbar>
+                                <AllRoutes></AllRoutes>
+                                {/* <Footer></Footer> */}
+                                <Footer2></Footer2>
+                            </Router>
+                        </AuthProvider>
+                    </ThemeProvider>
+                </div>
+            </GoogleOAuthProvider>
+        </ScrollSmoother>
     );
 }
 
