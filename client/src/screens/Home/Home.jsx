@@ -6,6 +6,7 @@ import Nightbanner from "../../components/Nightbanner/Nightbanner";
 import CollageHeart from "../../components/CollageHeart/CollageHeart";
 import Hero from "../../components/ScrollFancy/Hero";
 import CountDown from "../../components/CountDown/CountDown";
+import Schedule from "../Schedule_new/Schedule"
 
 const artists = []
 
@@ -37,6 +38,9 @@ const Home = () => {
             </section>
             <section className="section-5">
                 <Heading title={"SCHEDULE"} />
+            </section>
+            <section className="section-schedule">
+                <Schedule />
             </section>
         </div>
     );
