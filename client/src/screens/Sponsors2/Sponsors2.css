@@ -1,0 +1,71 @@
+.sponsors2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 5rem;
+    width: 100%;
+}
+
+.sponsors2 section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    padding: 1.2rem;
+}
+
+.sponsors2 section h1, .sponsors2 section h2 {
+    font-family: var(--heading-font);
+    text-align: center;
+    width: 100%;
+}
+
+.sponsors2 section p {
+    font-size: 1.2rem;
+}
+
+.sponsors2 .intro p {
+    width: min(100%, 45ch);
+    text-align: center;
+}
+
+.sponsors2 .college {
+    align-items: start;
+    position: relative;
+    z-index: 1;
+}
+
+.sponsors2 .college h1 {
+    font-family: var(--body-font);
+    text-align: left;
+    z-index: 2;
+}
+
+.sponsors2 .college .left {
+    width: min(40ch, 100%);
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.sponsors2 .college .right {
+    position: absolute;
+    z-index: 0;
+    width: 300px;
+    right: 0;
+    top: 0;
+}
+
+.sponsors2 .college .right img {
+    width: 100%;
+}
+
+.sponsors2 .about-rebeca {
+    background-image: url("/assets/imgs/sponsorship/backdrop.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    min-height: 400px;
+}
