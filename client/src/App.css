@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   width: 100%;
-  font-family: 'Delius Swash Caps', serif;
+  font-family:var(--body-font), serif;
   background: #141414;
 
   /* width: min(100%, 1500px); */

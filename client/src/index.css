@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Kaushan+Script&family=Vina+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Kaushan+Script&family=Vina+Sans&display=swap');
 :root {
 	font-optical-sizing: auto;
 	font-weight: 400;
@@ -14,7 +14,7 @@
 	--primary: var(--accent1);
 	--app-background: #000;
 
-	--body-font: 'Delius Swash Caps', serif;
+	--body-font: 'Andika', serif;
 	--display-font: 'Kaushan Script', cursive;
 	--heading-font: 'Vina Sans', sans-serif;
 
