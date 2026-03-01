@@ -10,7 +10,7 @@ import ComingSoon2k26 from "./screens/ComingSoon2k26/ComingSoon2k26";
 import Team from "./screens/Team/Team";
 import EventSingle from "./screens/EventSingle/EventSingle";
 import ProfileDashboard from "./components/ProfileInfo/ProfileInfo";
-// import EventReg from "./components/EventReg/EventReg";
+import EventReg from "./components/EventReg/EventReg";
 import PageNotFound from "./screens/PageNotFound/PageNotFound";
 import ComingSoon from "./screens/ComingSoon/ComingSoon";
 import Sponsors2 from "./screens/Sponsors2/Sponsors2";
@@ -37,6 +37,7 @@ const AllRoutes = () => {
             {/* <Route exact path="/events/:eventSlug/register" element={<EventReg />} /> */}
             <Route exact path="/*" element={<PageNotFound />} />
             <Route exact path="/sponsorship" element={<Sponsors2 />} />
+            <Route exact path="/events/:eventSlug/register" element={<EventReg />} />
         </Routes>
     );
 };

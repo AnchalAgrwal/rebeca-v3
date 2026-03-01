@@ -58,38 +58,41 @@ const EventSingle = () => {
     }
 
     return (
-        allEvents && <div className="event-single-container">
-            {/* Background Image with Overlay */}
-            <div
-                className="event-single-banner"
-                style={{
-                    position: `relative`,
-                    width: `100%`,
-                    minHeight: `300px`,
-                    background: `url("${oneEvent?.thumbnail}") no-repeat`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                }}
-            >
-                <div className="event-single-overlay">
-                    <div className="eposter">
-                        <div className="regfee">Fee ₹ {oneEvent.regfee}</div>
-                        <img src={oneEvent.poster} alt={"Poster"} />
-                    </div>
-                    <div className="event-single-header">
-                        <span className="event-single-badge">{oneEvent?.type}</span>
-                        <h1 className="event-single-title">{oneEvent?.name}</h1>
-                        {/* <p className="event-single-subtitle">
+        oneEvent && (
+            <div className="event-single-container">
+                {/* Background Image with Overlay */}
+                <div
+                    className="event-single-banner"
+                    style={{
+                        position: `relative`,
+                        width: `100%`,
+                        minHeight: `300px`,
+                        background: `url("${oneEvent?.thumbnail}") no-repeat`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                    }}
+                >
+                    <div className="event-single-overlay">
+                        <div className="eposter">
+                            {oneEvent.regfee ? (<div className="regfee">Fee ₹ {oneEvent.regfee}</div>) : <></>}
+                            <img src={oneEvent.poster} alt={"Poster"} />
+                        </div>
+                        <div className="event-single-header">
+                            {oneEvent.type !== "performance" && (
+                                <span className="event-single-badge">{oneEvent?.type}</span>
+                            )}
+                            <h1 className="event-single-title">{oneEvent?.name}</h1>
+                            {/* <p className="event-single-subtitle">
                             {extractFullDate(oneEvent?.rounds[0]?.startTime, true)} to{" "}
                             {extractFullDate(oneEvent?.rounds[0]?.endTime, true)}
                         </p> */}
-                        <div className="eposter-mobile">
-                            <div className="regfee">Fee ₹ {oneEvent.regfee}</div>
-                            <img src={oneEvent.poster} alt={"Poster"} />
+                            <div className="eposter-mobile">
+                                {oneEvent?.regfee ? (<div className="regfee">Fee ₹ {oneEvent.regfee}</div>) : <></>}
+                                <img src={oneEvent.poster} alt={"Poster"} />
+                            </div>
                         </div>
-                    </div>
 
-                    {/* {oneEvent?.rulesDocURL && <div className="event-single-buttons">
+                        {/* {oneEvent?.rulesDocURL && <div className="event-single-buttons">
                         <Button
                             innerText={isGoogleForm(oneEvent?.rulesDocURL) ? "Google Form" : "View Rules"}
                             onClick={() => window.open(oneEvent?.rulesDocURL, "_blank")}
@@ -146,45 +149,48 @@ const EventSingle = () => {
                             This event accepts registration only through <b>google forms</b>.
                         </Alert>
                     )} */}
-                    {/* <Alert className="event-alert" variant="outlined" severity="info" color="info" sx={{ mt: 1 }}>
+                        {/* <Alert className="event-alert" variant="outlined" severity="info" color="info" sx={{ mt: 1 }}>
                         Event has concluded.
                     </Alert> */}
+                    </div>
                 </div>
-            </div>
 
-            {/* Content Below */}
-            <div className="event-single-content">
-                <p className="event-single-description">{oneEvent.desc}</p>
-                {oneEvent.rounds && <h2 className="schedule-title">Schedule</h2>}
+                {/* Content Below */}
+                <div className="event-single-content">
+                    <p className="event-single-description">{oneEvent.desc}</p>
+                    {oneEvent.rounds.length && <h2 className="schedule-title">Schedule</h2>}
 
-                <div className="prelims-container">
-                    {oneEvent?.rounds?.map((round, i) => {
-                        return (
-                            <RoundCard
-                                name={round.roundname || round.name || `Round ${i + 1}`}
-                                start={extractFullDate(round.start || round.startTime || oneEvent.startTime)}
-                                end={extractFullDate(round.end || round.endTime || "")}
-                                venue={round.venue}
-                                key={i}
-                                i={i}
-                                hideHeading={!oneEvent?.rulesDocURL}
-                            />
-                        );
-                    })}
+                    <div className="prelims-container">
+                        {oneEvent?.rounds?.map((round, i) => {
+                            return (
+                                <RoundCard
+                                    name={round.roundname || round.name || `Round ${i + 1}`}
+                                    start={extractFullDate(round.start || round.startTime || oneEvent.startTime)}
+                                    end={extractFullDate(round.end || round.endTime || "")}
+                                    venue={round.venue}
+                                    key={i}
+                                    i={i}
+                                    hideHeading={!oneEvent?.rulesDocURL}
+                                />
+                            );
+                        })}
+                    </div>
                 </div>
-            </div>
 
-            <div className="coordinators event-single-content" style={{ paddingTop: 0 }}>
-                <h2 className="schedule-title">Coordinators</h2>
-                <div className="coords-list">
-                    {oneEvent.coords.map((e, i) => {
-                        console.log("coordinator");
-                        console.log(e);
-                        return <CustomAvatar title={e.name} subtitle={e.role} phone={e.phone} src={e.image} key={i} />;
-                    })}
-                </div>
+                {oneEvent.coords.length ? (<div className="coordinators event-single-content" style={{ paddingTop: 0 }}>
+                    <h2 className="schedule-title">Coordinators</h2>
+                    <div className="coords-list">
+                        {oneEvent.coords.map((e, i) => {
+                            console.log("coordinator");
+                            console.log(e);
+                            return (
+                                <CustomAvatar title={e.name} subtitle={e.role} phone={e.phone} src={e.image} key={i} />
+                            );
+                        })}
+                    </div>
+                </div>) : <></>}
             </div>
-        </div>
+        )
     );
 };
 
