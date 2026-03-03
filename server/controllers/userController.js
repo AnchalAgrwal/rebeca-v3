@@ -4,6 +4,16 @@ const AppError = require("../utils/appError");
 const uploadToCloudinary = require("../utils/cloudinary").uploadToCloudinary;
 const deleteFromCloudinary = require("../utils/cloudinary").deleteFromCloudinary;
 
+exports.createUser = catchAsync(async (userData) => {
+    const user = await User.create({
+        name: userData.name,
+        email: userData.email,
+        image: userData.image,
+        googleId: userData.googleId,
+    });
+    return user;
+});
+
 exports.updateUser = catchAsync(async (req, res, next) => {
     console.log("request for user update received");
     console.log("Req.body:", req.body);
@@ -59,4 +69,19 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
     } catch (err) {
         next(err);
     }
+});
+
+exports.deleteUser = catchAsync(async (req, res, next) => {
+    const { id } = req.params;
+    const user = await User.findByIdAndDelete(id);
+    if (!user) {
+        return next(new AppError("No user found with that ID", 404));
+    }
+    res.status(200).json({
+        status: "success",
+        message: "User deleted successfully",
+        data: {
+            user,
+        },
+    });
 });

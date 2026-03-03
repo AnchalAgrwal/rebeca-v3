@@ -3,6 +3,8 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
+const AppError = require("../utils/appError");
+const { createUser } = require("./userController");
 
 // --- Keep your existing signToken and createSendToken functions here ---
 const signToken = (id) => {
@@ -55,11 +57,11 @@ exports.googleAuth = catchAsync(async (req, res, next) => {
     let statusCode = 200;
 
     if (!user) {
-        user = await User.create({
+        user = createUser({
             name: name,
             email: email,
             image: picture,
-            googleId: sub, // Use 'sub' as the unique Google ID
+            googleId: sub,
         });
         statusCode = 201; // Created
     }
