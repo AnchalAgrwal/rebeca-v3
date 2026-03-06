@@ -10,7 +10,16 @@
     "thumbnail": "https://placehold.co/150x150.jpg",
     "asset": "",
     "startTime": "2026-03-19T17:00:00",
-    "rounds": [],
+    "rounds": [
+      {
+        "no": 1,
+        "name": "Reflexobeta Performance",
+        "desc": "dance performance by reflexobeta",
+        "start": "Day 1 18:00",
+        "end": "Day 1 19:00",
+        "venue": "Main Stage"
+      }
+    ],
     "coords": [],
     "prizemoney": {}
   },
