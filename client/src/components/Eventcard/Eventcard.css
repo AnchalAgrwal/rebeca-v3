@@ -44,6 +44,9 @@
   /* height: 50%; */
   border: 0px solid red;
 }
+.event-card .event-data .data-header .evname .event-badge {
+  transform: rotate(180deg);
+}
 .event-card .event-data.expand .data-header {
   writing-mode: horizontal-tb;
   transform: rotate(0deg);
@@ -72,6 +75,7 @@
   justify-content: center;
   border: 0px solid green;
   gap: 20px;
+  /* position: relative; */
   /* width: 1.5rem; */
   /* width: 100%; */
   /* margin-top: 2rem; */
@@ -142,6 +146,12 @@
   -webkit-box-orient: vertical;
   padding: 0 0 0 20px;
   font-size: 1.2rem;
+}
+
+.event-card .event-data .data-header .evname {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .event-card .event-data .data-header:hover {

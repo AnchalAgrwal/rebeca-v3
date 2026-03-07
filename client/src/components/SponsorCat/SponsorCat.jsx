@@ -9,10 +9,10 @@ import DiamondIcon from "@mui/icons-material/Diamond";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const tiers = [
-    { id: 1, name: "BECA SPONSOR", amount: "19 LAKH", icon: <ChangeHistoryIcon />, focusColor: "#fbc02d" }, // Green
-    { id: 2, name: "ASSOCIATE SPONSOR", amount: "16 LAKH", icon: <WidgetsIcon />, focusColor: "#4caf50" }, // Yellow/Gold
-    { id: 3, name: "CO-SPONSOR", amount: "13 LAKH", icon: <AllInclusiveIcon />, focusColor: "#e91e63" }, // Pink
-    { id: 4, name: "TITLE SPONSOR", amount: "6 LAKH", icon: <DiamondIcon />, focusColor: "#1a8fe3" }, // Blue
+    { id: 1, name: "BECA SPONSOR", amount: "6 LAKH", icon: <ChangeHistoryIcon />, focusColor: "#fbc02d" }, // Green
+    { id: 2, name: "ASSOCIATE SPONSOR", amount: "13 LAKH", icon: <WidgetsIcon />, focusColor: "#4caf50" }, // Yellow/Gold
+    { id: 3, name: "CO-SPONSOR", amount: "16 LAKH", icon: <AllInclusiveIcon />, focusColor: "#e91e63" }, // Pink
+    { id: 4, name: "TITLE SPONSOR", amount: "19 LAKH", icon: <DiamondIcon />, focusColor: "#1a8fe3" }, // Blue
 ];
 
 const perksData = {
@@ -106,7 +106,7 @@ export default function SponsorsCategory() {
                             m: 0,
                         }}
                     >
-                        PERKS & BENEFITS
+                        Perks & Benefits
                     </Typography>
                 </Divider>
 

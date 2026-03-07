@@ -100,7 +100,8 @@ export default function EventRegister() {
     const [isreg, setIsreg] = useState(false);
     const [errors, setErrors] = useState({});
     const curEvent = allEvents.filter((ev) => ev.slug === eventSlug)[0];
-    const takePay = curEvent?.regfee === 0 || user?.email.endsWith("iiests.ac.in");
+    const takePay = (curEvent?.regfee !== 0) && (!user?.email.endsWith("iiests.ac.in"));
+    const canMoveForward = user && (user.phone && user.dept && user.college && user.passout_year);
 
     const [formData, setFormData] = useState({
         userId: user?._id,
@@ -172,7 +173,8 @@ export default function EventRegister() {
     
         // 3. Team Members & Phone Validation
         // 3.1 Team member length validation
-        const teamLen = formData.teamMem.length
+        var teamLen = formData.teamMem.length;
+        if(teamLen === 0) teamLen++; // To denote user is the lone member
         if (teamLen < curEvent.minTeamSize || teamLen > curEvent.maxTeamSize) {
             tempErrors.teamMem = `Team Members must be within ${curEvent.minTeamSize} and ${curEvent.maxTeamSize}`
         }
@@ -199,6 +201,10 @@ export default function EventRegister() {
     };
 
     const handleNext = async () => {
+        if (activeStep === 0 && !canMoveForward) {
+            showNotification("Please update your profile details first.", "error");
+            return;
+        }
         validate()
         console.log("total errors: ", errors)
         // Step 1 -> 2 Validation
@@ -269,6 +275,13 @@ export default function EventRegister() {
                         <Typography variant="h6" gutterBottom>
                             Verify Your Identity
                         </Typography>
+                        {/* ADD THIS ALERT */}
+                        {!canMoveForward && (
+                            <Alert severity="warning" sx={{ mt: 2, mb: 2 }}>
+                                <AlertTitle>Incomplete Profile</AlertTitle>
+                                Please complete your profile details (Phone, Department, College, Passout Year) to proceed with registration.
+                            </Alert>
+                        )}
                         <Stack spacing={2} sx={{ mt: 2 }}>
                             <TextField fullWidth label="Your Name" value={user?.name || "User"} disabled />
                             <TextField fullWidth label="Registered Email" value={user?.email || ""} disabled />
@@ -372,12 +385,12 @@ export default function EventRegister() {
                             <>
                                 <Typography variant="h6">Payment Details</Typography>
                                 <Typography variant="body2" sx={{ my: 2 }}>
-                                    Scan QR to pay ₹{curEvent.regfee === null ? 1 : 0} for <b>{curEvent.name}</b>
+                                    Scan QR to pay <b>₹{curEvent?.regfee}</b> for <b>{curEvent.name}</b>
                                 </Typography>
                                 <img
-                                    src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PayFor-${eventSlug}`}
+                                    src={`/assets/payment-qr.webp`}
                                     alt="QR"
-                                    style={{ borderRadius: "8px", border: "1px solid #eee", marginBottom: "2rem" }}
+                                    style={{ borderRadius: "8px", border: "1px solid #eee", marginBottom: "2rem", width: "100%" }}
                                 />
                                 <TextField
                                     fullWidth
@@ -425,7 +438,7 @@ export default function EventRegister() {
                         <Button
                             variant="contained"
                             onClick={handleNext}
-                            disabled={isreg}
+                            disabled={isreg || (activeStep === 0 && !canMoveForward)}
                             startIcon={isreg ? <CircularProgress size={20} color="inherit" /> : null}
                         >
                             {isreg ? "Registering..." : activeStep === 2 ? "Finish & Register" : "Next"}
