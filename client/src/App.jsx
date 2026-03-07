@@ -11,7 +11,6 @@ import Footer2 from "./components/Footer2/Footer2.jsx";
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { AuthProvider } from "./AuthContext.jsx";
-import Preloader from "./components/Preloader/Preloader.jsx";
 import DrawingLoader from "./components/Preloader/DrawingLoader.jsx";
 import ScrollSmoother from "./components/ScrollSmoother/ScrollSMoother.jsx";
 

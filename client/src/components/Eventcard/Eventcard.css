@@ -160,6 +160,9 @@
 }
 
 @media only screen and (max-width: 900px){
+  .event-card .event-data .data-header .evname .event-badge {
+    transform: rotate(0deg);
+  }
   .event-card, .event-data{
     flex-direction: column;
   }

@@ -125,7 +125,6 @@ export default function EventRegister() {
     // --- HANDLERS ---
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        console.log(name, value, e.target);
         setFormData((prev) => ({ ...prev, [name]: value }));
         if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
     };
