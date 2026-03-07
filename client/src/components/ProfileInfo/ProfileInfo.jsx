@@ -111,8 +111,14 @@ const ProfileDashboard = () => {
 
             // Call the renamed API
             const upd = await updateUser(updatePayload);
-        
+            console.log("upd user success: ", upd)
+            // update the user
+            setUser(upd?.data?.data?.user)
+
+            // showsuccess
             showToast("Success!", "Profile updated successfully.", "success");
+
+
         } catch (err) {
             const detailed = err?.response?.data?.message || err.message;
             showToast("Error", detailed, "error");
