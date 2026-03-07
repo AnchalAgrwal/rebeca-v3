@@ -2,3 +2,30 @@
     --theme: #1d80f3;
     line-break: anywhere;
 }
+
+/* Reduce header height on mobile */
+.MuiToolbar-root {
+    min-height: 48px !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+
+/* Shrink the branding title on mobile */
+@media (max-width: 600px) {
+    .MuiTypography-root[class*="brandingTitle"],
+    header .MuiTypography-h6 {
+        font-size: 1rem !important;
+    }
+
+    /* Shrink the logo */
+    header img {
+        height: 24px !important;
+        width: 24px !important;
+    }
+
+    /* Tighten header padding on mobile */
+    header .MuiToolbar-root {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+}

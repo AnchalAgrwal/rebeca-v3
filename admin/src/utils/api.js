@@ -1,19 +1,19 @@
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
-const API_URL = import.meta.env.VITE_API_URL;
 
 const API = axios.create({
-    baseURL: API_URL,
+    baseURL: `${import.meta.env.VITE_SERV_URL}/api/v3`,
     withCredentials: true,
 });
 
-// auth apis
-export const checkAuthStatus = () => API.get("/auth/checkStatus")
+// auth
+export const checkAuthStatus = () => API.get("/auth/checkStatus");
 export const logoutAdmin = () => API.get("/auth/logout");
 export const loginWithGoogle = (idToken) =>
-    API.post("/auth/google-login", {
-        credential: idToken,
-    });
+    API.post("/auth/google-login", { credential: idToken });
+export const verifyPasskey = (passkey) =>
+    API.post("/auth/verify-passkey", { passkey });
+export const getAllRegistrations = () => API.get("/evregister/all");
 
 export default API;

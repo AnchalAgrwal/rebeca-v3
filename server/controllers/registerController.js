@@ -72,14 +72,14 @@ exports.getAllUserRegs = catchAsync(async (req, res, next) => {
 exports.getAllReg = catchAsync(async (req, res, next) => {
     console.log("getallreg api");
     try {
-        const allRegs = await Register.find().populate("userId", "name email").sort({ createdAt: -1 });
+        const allRegs = await Register.find().populate("userId", "name email phone").sort({ createdAt: -1 });
 
         // Check if we actually found anything
         if (!allRegs || allRegs.length === 0) {
             return res.status(200).json({
                 status: "success",
                 results: 0,
-                data: [],
+                data: { regs: [] },
             });
         }
 

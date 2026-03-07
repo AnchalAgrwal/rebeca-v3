@@ -105,3 +105,18 @@ exports.logout = (req, res) => {
 
     res.status(200).json({ status: "success" });
 };
+
+//verifying admin passkey 
+exports.verifyPasskey = catchAsync(async (req, res, next) => {
+    const { passkey } = req.body;
+
+    if (!passkey) {
+        return next(new AppError("Passkey is required.", 400));
+    }
+
+    if (passkey !== process.env.ADMIN_PASSKEY) {
+        return next(new AppError("Invalid passkey.", 401));
+    }
+
+    res.status(200).json({ status: "success" });
+});

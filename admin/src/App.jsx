@@ -1,10 +1,12 @@
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import SettingsIcon from "@mui/icons-material/Settings";
+import TableRowsIcon from "@mui/icons-material/TableRows";
 import { Outlet, useNavigate, Navigate, useLocation } from "react-router";
 import { ReactRouterAppProvider } from "@toolpad/core/react-router";
 import { useAuth } from "./AuthContext";
 import { Box, CircularProgress } from "@mui/material";
 import { useMemo } from "react";
+import EventIcon from '@mui/icons-material/Event';
 import "./App.css";
 
 const NAVIGATION = [
@@ -20,18 +22,25 @@ const NAVIGATION = [
     {
         segment: "events",
         title: "Events",
-        icon: <SettingsIcon />,
-        pattern: 'events{/:eventId}*',
-    }
+        icon: <EventIcon />,
+        pattern: "events{/:eventId}*",
+    },
+    {
+        segment: "registrations",
+        title: "Registrations",
+        icon: <TableRowsIcon />,
+    },
 ];
 
 const BRANDING = {
-    title: "Admin V3",
+    title: "Rebeca Admin",
 };
 
 export default function App() {
-    const { handleLogout, user, loading } = useAuth();
-    // Derived session - this is the key fix
+    const { handleLogout, user, loading, passkeyVerified } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const session = useMemo(() => (user ? {
         user: {
             name: user.name,
@@ -39,25 +48,18 @@ export default function App() {
             image: user.image,
         }
     } : null), [user]);
-    
+
     const handleLogoutClick = async () => {
         await handleLogout();
         navigate("/signin");
     };
 
-    const authentication = useMemo(() => {
-        return {
-            signIn: () => {},
-            signOut: () => {
-                handleLogoutClick();
-            },
-        };
-    }, []);
+    const authentication = useMemo(() => ({
+        signIn: () => {},
+        signOut: () => { handleLogoutClick(); },
+    }), []);
 
-    const navigate = useNavigate();
-    const location = useLocation();
-
-    // Show loading screen while checking auth
+    // Show loading screen while checking auth on app start
     if (loading) {
         return (
             <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
@@ -66,22 +68,32 @@ export default function App() {
         );
     }
 
-    // If not signed in and not on signin page, redirect
+    // Not logged in at all -> go to signin
+    //This can be commented out for direct access to the dashboard 
+    //From (A) here
+
     if (!user && location.pathname !== "/signin") {
         return <Navigate to="/signin" replace />;
     }
 
-    // If signed in but on signin page, redirect to home
-    if (user && location.pathname === "/signin") {
+    // Logged in via Google but passkey not verified → go to signin (step 2)
+    if (user && !passkeyVerified && location.pathname !== "/signin") {
+        return <Navigate to="/signin" replace />;
+    }
+
+    //to (B) here
+
+    // Fully authenticated but trying to access signin → go to dashboard
+    if (user && passkeyVerified && location.pathname === "/signin") {
         return <Navigate to="/" replace />;
     }
 
-    // If on signin page, just show Outlet (no Toolpad layout)
+    // On signin page -> just render the signin page with no Toolpad shell
     if (location.pathname === "/signin") {
         return <Outlet />;
     }
 
-    return (user &&
+    return (
         <ReactRouterAppProvider
             navigation={NAVIGATION}
             branding={BRANDING}

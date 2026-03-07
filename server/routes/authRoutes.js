@@ -7,5 +7,6 @@ const router = express.Router();
 router.post('/google-login', authController.googleAuth);
 router.get('/checkStatus', checkAuth, authController.getMe);
 router.get('/logout', authController.logout);
+router.post('/verify-passkey', checkAuth, authController.verifyPasskey);
 
 module.exports = router;
